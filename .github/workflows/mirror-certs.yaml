@@ -1,0 +1,25 @@
+name: Mirror VA CA Certificates
+
+on:
+  schedule:
+    - cron: '0 0 1,15 * *'
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download certificates
+        run: |
+          wget --no-parent -nd -r -N --retry-connrefused --wait 5 --random-wait 'http://aia.pki.va.gov/PKI/AIA/VA/'
+          rm index.html
+      - name: Check in changed files
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: va-vsp-bot
+          author_email: devops@va.gov
+          branch: main
+          cwd: .
+          add: *.cer
+          message: 'Update Certificates'
