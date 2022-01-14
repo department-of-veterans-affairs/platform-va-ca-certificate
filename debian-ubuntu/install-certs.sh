@@ -37,3 +37,5 @@ for cert in $(find $ANCHORS -type f -name "*.cer")
   done
 
 echo "Installed CA certs."
+
+update-ca-certificates
