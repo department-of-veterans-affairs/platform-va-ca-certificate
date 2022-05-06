@@ -12,8 +12,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Download certificates
         run: |
-          wget --no-parent -nd -r -N --retry-connrefused --wait 5 --random-wait 'http://aia.pki.va.gov/PKI/AIA/VA/'
-          rm index.html
+          wget -r -N --wait 5 --random-wait --retry-connrefused -np -nH --cut-dirs 5 -A.cer http://crl.pki.va.gov/PKI/AIA/VA/
+          wget -r -N --wait 5 --random-wait --retry-connrefused -np -nH --cut-dirs 5 -A.cer http://crl.pki.va.gov/PKI/AIA/SSP/
+          wget -r -N --wait 5 --random-wait --retry-connrefused -np -nH --cut-dirs 5 -A.cer http://crl.pki.va.gov/PKI/AIA/FederalPKI/
       - name: Check in changed files
         uses: EndBug/add-and-commit@v7
         with:
