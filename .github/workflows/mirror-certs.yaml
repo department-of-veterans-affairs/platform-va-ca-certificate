@@ -22,5 +22,4 @@ jobs:
           author_email: devops@va.gov
           branch: main
           cwd: .
-          add: *.cer
           message: 'Update Certificates'
