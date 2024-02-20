@@ -15,6 +15,7 @@ jobs:
           wget -r -N --wait 5 --random-wait --retry-connrefused -np -nH --cut-dirs 5 -A.cer http://crl.pki.va.gov/PKI/AIA/VA/
           wget -r -N --wait 5 --random-wait --retry-connrefused -np -nH --cut-dirs 5 -A.cer http://crl.pki.va.gov/PKI/AIA/SSP/
           wget -r -N --wait 5 --random-wait --retry-connrefused -np -nH --cut-dirs 5 -A.cer http://crl.pki.va.gov/PKI/AIA/FederalPKI/
+          wget -r -N --wait 5 --random-wait --retry-connrefused -np -nH --cut-dirs 5 -A.cer http://crl.pki.va.gov/PKI/AIA/3party/
       - name: Check in changed files
         uses: EndBug/add-and-commit@v7
         with:
